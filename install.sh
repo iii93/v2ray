@@ -1,6 +1,5 @@
 #ws+tls+web
 #切换root用户执行下面命令
-apt update && apt upgrade -y
 apt install vim
 apt install curl
 #安装v2ray
@@ -17,6 +16,10 @@ rm /usr/local/etc/v2ray/config.json
 rm /etc/caddy/Caddyfile
 rm /usr/share/caddy/index.html
 mv /v2ray/config.json /usr/local/etc/v2ray/
+read -p "请输入你的id（a7f43ece-5d93-46a5-94e8-5a20d19cf3dc）：" uuid
+sed -i "s/\"id\": \"[^\"]*\"/\"id\": \"${uuid}\"/g" /usr/local/etc/v2ray/config.json
+read -p "请输入你的路径：" path
+sed -i "s/\"ray\": [^\"]*/\"ray\": ${ray}/g" /usr/local/etc/v2ray/config.json
 mv /v2ray/Caddyfile /etc/caddy/
 read -p "请输入你的域名：" domain
 sed -i "s/https:\/\/abc\.com/${domain}/g" /etc/caddy/Caddyfile
