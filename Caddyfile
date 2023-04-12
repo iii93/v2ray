@@ -1,5 +1,5 @@
 # Caddy v2 (recommended)
-https://abc.leemin666.top {
+https://abc.com {
      # Set this path to your site's directory.
         root * /usr/share/caddy
 

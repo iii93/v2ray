@@ -18,6 +18,8 @@ rm /etc/caddy/Caddyfile
 rm /usr/share/caddy/index.html
 mv /v2ray/config.json /usr/local/etc/v2ray/
 mv /v2ray/Caddyfile /etc/caddy/
+read -p "请输入你的域名：" domain
+sed -i "s/https:\/\/abc\.com/${domain}/g" /etc/caddy/Caddyfile
 mv /v2ray/index.html /usr/share/caddy
 systemctl start v2ray
 systemctl start caddy
