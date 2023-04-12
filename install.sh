@@ -2,6 +2,8 @@
 #切换root用户执行下面命令
 apt install vim -y
 apt install curl -y
+apt install nmap -y
+apt install htop -y
 apt install git -y
 cd /
 git clone https://github.com/iii93/v2ray.git
@@ -26,6 +28,7 @@ sed -i "s/\"ray\": [^\"]*/\"ray\": ${ray}/g" /usr/local/etc/v2ray/config.json
 mv /v2ray/Caddyfile /etc/caddy/
 read -p "请输入你的域名：" domain
 sed -i "s/https:\/\/abc\.com/${domain}/g" /etc/caddy/Caddyfile
+sed -i "s/\"ray\": [^\"]*/\"ray\": ${ray}/g" /etc/caddy/Caddyfile
 mv /v2ray/index.html /usr/share/caddy
 systemctl start v2ray
 systemctl start caddy

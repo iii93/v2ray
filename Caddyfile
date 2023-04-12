@@ -14,7 +14,7 @@ https://abc.com {
         curves x25519
     }
     @v2ray_websocket {
-        path /leemin
+        path /ray
         header Connection Upgrade
         header Upgrade websocket
     }
