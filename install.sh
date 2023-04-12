@@ -2,6 +2,9 @@
 #切换root用户执行下面命令
 apt install vim
 apt install curl
+apt install git
+cd /
+git clone https://github.com/iii93/v2ray.git
 #安装v2ray
 bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
 systemctl enable v2ray
