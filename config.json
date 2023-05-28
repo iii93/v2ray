@@ -8,7 +8,9 @@
         "clients": [
           {
             "id": "a7f43ece-5d93-46a5-94e8-5a20d19cf3d",
-            "alterId": 0
+            "alterId": 0,
+            "security": "auto",
+            "level": 4
           }
         ]
       },
