@@ -1,6 +1,6 @@
 #ws+tls+web
 #切换root用户执行下面命令
-apt update && apt upgrade -y
+apt update && apt upgrade git -y
 apt install vim curl -y
 git clone https://github.com/iii93/v2ray.git
 #安装v2ray
