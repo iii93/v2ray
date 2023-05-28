@@ -19,12 +19,12 @@ rm /usr/share/caddy/index.html
 mv /v2ray/config.json /usr/local/etc/v2ray/
 read -p "请输入你的id（a7f43ece-5d93-46a5-94e8-5a20d19cf3dc）：" uuid
 sed -i "s/\"id\": \"[^\"]*\"/\"id\": \"${uuid}\"/g" /usr/local/etc/v2ray/config.json
-read -p "请输入你的路径：" ray
-sed -i "s/\"ray\": [^\"]*/\"ray\": ${ray}/g" /usr/local/etc/v2ray/config.json
+read -p "请输入你的路径：" path
+sed -i "s/\"path\": [^\"]*/\"path\": ${path}/g" /usr/local/etc/v2ray/config.json
 mv /v2ray/Caddyfile /etc/caddy/
 read -p "请输入你的域名：" domain
 sed -i "s/https:\/\/abc\.com/${domain}/g" /etc/caddy/Caddyfile
-sed -i "s/\"ray\": [^\"]*/\"ray\": ${ray}/g" /etc/caddy/Caddyfile
+sed -i "s/\"path\": [^\"]*/\"path\": ${path}/g" /etc/caddy/Caddyfile
 mv /v2ray/index.html /usr/share/caddy
 systemctl start v2ray
 systemctl start caddy
