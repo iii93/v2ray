@@ -9,22 +9,22 @@ systemctl enable v2ray
 #安装caddy
 apt install -y debian-keyring debian-archive-keyring apt-transport-https
 curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
-curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
+curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list 
 apt update
 apt install caddy
 #修改v2ray和caddy配置文件
 rm /usr/local/etc/v2ray/config.json
 rm /etc/caddy/Caddyfile
 rm /usr/share/caddy/index.html
-mv /v2ray/config.json /usr/local/etc/v2ray/
-read -p "请输入你的id（a7f43ece-5d93-46a5-94e8-5a20d19cf3dc）：" uuid
+mv /v2ray/config.json /usr/local/etc/v2ray/ 
+read -p "请输入你的id（a7f43ece-5d93-46a5-94e8-5a20d19cf3dc）：" uuid 
 sed -i "s/\"id\": \"[^\"]*\"/\"id\": \"${uuid}\"/g" /usr/local/etc/v2ray/config.json
 read -p "请输入你的路径：" path
-sed -i "s/\"path\": [^\"]*/\"path\": ${path}/g" /usr/local/etc/v2ray/config.json
-mv /v2ray/Caddyfile /etc/caddy/
+sed -i 's/ray/'"${path}"'/g' /usr/local/etc/v2ray/config.json 
+mv /v2ray/Caddyfile /etc/caddy/ 
 read -p "请输入你的域名：" domain
-sed -i "s/https:\/\/abc\.com/${domain}/g" /etc/caddy/Caddyfile
-sed -i "s/\"path\": [^\"]*/\"path\": ${path}/g" /etc/caddy/Caddyfile
+sed -i "s/https:\/\/abc\.com/${domain}/g" /etc/caddy/Caddyfile 
+sed -i 's/ray/'"${path}"'/g' /etc/caddy/Caddyfile 
 mv /v2ray/index.html /usr/share/caddy
 systemctl start v2ray
 systemctl start caddy
