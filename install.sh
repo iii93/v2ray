@@ -17,10 +17,10 @@ rm /usr/local/etc/v2ray/config.json
 rm /etc/caddy/Caddyfile
 rm /usr/share/caddy/index.html
 mv /v2ray/config.json /usr/local/etc/v2ray/ 
-read -p "请输入你的id（a7f43ece-5d93-46a5-94e8-5a20d19cf3dc）：" uuid 
-sed -i "s/\"id\": \"[^\"]*\"/\"id\": \"${uuid}\"/g" /usr/local/etc/v2ray/config.json
+read -p "请输入你的id（a7f43ece-5d93-46a5-94e8-5a20d19cf3dc）：" uuid  
+sed -i 's/a7f43ece-5d93-46a5-94e8-5a20d19cf3dc/'"${uuid}"'/g' /usr/local/etc/v2ray/config.json 
 read -p "请输入你的路径：" path
-sed -i 's/ray/'"${path}"'/g' /usr/local/etc/v2ray/config.json 
+sed -i 's/ray/'"${path}"'/g' /usr/local/etc/v2ray/config.json  
 mv /v2ray/Caddyfile /etc/caddy/ 
 read -p "请输入你的域名：" domain
 sed -i "s/https:\/\/abc\.com/${domain}/g" /etc/caddy/Caddyfile 
